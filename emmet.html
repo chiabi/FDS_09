@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- <!DOCTYPE html> 위로는 아무것도 없어야함  -->
+<!-- 표준모드로 렌더링 -->  
+<!-- vscode는 emmet 이라는 확장 기능이 내장되어 있다. -->
+<!-- !!! || <!DOCTYPE html> -->
+<!-- Alias of : 축약을 미리 지정 vscode의 스니펫이나 vim의 alias를 미리 등록해놓아도 좋다 -->
+<html lang="ko">
+<!-- html: 루트 -->
+<!-- en : 인터내셔널 잉글리쉬 || us : 미국식 영어-->
+<!-- ko-KR -->
+<!-- lang : language 1,2,3을 '일, 이, 삼'으로 읽어주는냐 'one two three'로 읽어주는냐 (웹접근성 관련) -->
+<head>
+  <!-- body를 해석하기 전 기본적으로 알아야할 정보들을 다룸 -->
+  <meta charset="UTF-8">
+  <!-- 
+    * chareset : 인코딩속성, 반드시 첫줄에 할 것
+    html은 인터프리터 언어라 해석을 라인별로 한다 그러므로 title보다 위에 해야한다.
+    브라우저가 지원하는 언어가 다른거라면 인코딩 미 지정시 깨질 수 있다.
+    * meta: 빈요소(종료태그가 없음), 다양한 정보를 담는다
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    * name: 다른 몇몇 태그도 쓰지만 모든 태그가 지원하는 속성은 아님 
+    * viewport: 화면에 보이는 영역(body영역), 가끔 안드로이드, ios(네이티브 개발자가)에서 320px로 지정하는데 
+      320 이상에서는 빈공간이 생긴다.
+      + width=device-width: 반응형 웹 사이트를 만든다면 반드시 선언되어야 하는
+      + initial-scale: 초기 비율, 원본 비율로 보여줌
+      확대, 축소, 최대화면, 최소화면 지정하는 것도 있으나 비추(접근성 관련)
+  -->
+  <!-- 렌더링 관련 -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 
+    * http-equiv 프로토콜과 동등한 : X-UA(유저 에이전트)-Compatible(호환성)
+    익스의 경우 호환성 보기 모드가 있음
+    content= "ie=edge"는 edge로 렌더링 하라는 의미가 아니라 최신버전으로 깔라는 의미이다.
+
+    ※ 익스 개발자 모드의 에뮬레이터의 지원은 완벽하지 않다. 실제 정식 버전과 다르게 보일 수 있다. 가상머신을 돌려야함;;
+  -->
+  <title>Web Cafe</title>
+  <!-- 
+    문서의 핵심 영역, 중요한 텍스트를 입력해야한다. 특수문자로 이쁘게 보이려고 하는 사람들도 있는데 하지 말자;; 
+    탭 넓이가 좁을때 중요한 정보가 가려지고 
+    SEO관점에서도 좋지 않다. 
+    시각장애인의 경우에도 소리로 들어야하므로 웹접근성 관점에서 좋지 않다.
+
+    ※ 쇼핑몰의 경우 상품에관한 핵심키워드를 타이틀에 페이지마다 따로 제공해주는 것이 좋다.
+    (`~ 쇼핑몰에 오신 것을 환영합니다`라는 식의 일관된 타이틀은 좋지 않다.)
+  -->
+</head>
+<body>
+  <!-- body: 컨텐츠가 되는 본문의 뿌리, 섹션의 뿌리 -->
+  <p>안녕하세요</p>
+  <p lang="en">Hi</p>
+  <!-- lang은 전역 속성이라 모든 태그에서 쓸 수 있다 -->
+  <!-- 전역속성 : id, class, title, lang, data-*(사용자 정의 속성) -->
+  <!-- 커스텀엘리먼트란 것도 있다. 이것은 수업시간에 다루지는 않는다 -->
+</body>
+</html>
+
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!-- DTD 정해진 문법 규칙, 근거 자료, 문서화 -->
+<!-- `-` 업계표준 `http:// ~`-->
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" conent="text/html;charset=UTF-8" />
+    <title>Document</title> -->

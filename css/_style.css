@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* css 첫줄은(각 페이지마다) 인코딩 선언을 해야한다. 빈줄이면 안된다. */
+/* @import로 불러왔다면? */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ff0;
+}
+
+.main {
+  background-color: #fcf;
+  display: grid;
+  /* 부모가 그리드가 되면 자식은 grid-item이 된다.(flex도 마찬가지 flex-item) */
+  /* grid-auto-columns: 30%;
+  grid-auto-rows: 150px; */
+  grid-template-columns: 35% 40% 25%;
+  /* 첫번째 열의 너비 두번째 열의 너비 세번째 열의 너비 */
+  grid-template-rows: 150px 150px;
+  /* 2행 3열 그리드 */
+  /* grid-template-areas: "book     news           "
+                       "board    twitter    site"; */
+  grid-gap: 1px;
+}
+.main section {
+  background-color: #3fc;
+}
+
+.recommend-book {
+  /* 영역별 별칭을 지정 */
+  grid-area: book;
+  grid-row: 1;
+  grid-column: 1;
+}
+.news {
+  grid-area: news;
+  grid-row: 1;
+  /* 속기법 
+    grid-column-start: 2;
+    grid-column-end: 4
+  */
+  grid-column: 2/4;
+}
+
+.board {
+  grid-area: board;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.favorite-site {
+  grid-area: site;
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.twitter {
+  grid-area: twitter;
+  grid-row: 2;
+  grid-column: 2;
+}
