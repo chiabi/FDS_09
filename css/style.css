@@ -1,16 +1,42 @@
 @charset "utf-8";
 /* css 첫줄은(각 페이지마다) 인코딩 선언을 해야한다. 빈줄이면 안된다. */
-/* @import로 불러왔다면? */
+/* @import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css); */
+@import url("normalize.css");
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700'); */
+@import url("fonts.css");
 
+/* 초기화 스타일 */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* 숨김콘텐츠 */
+/* a11y-hidden .readable-hidden 식으로 클래스를 준다 */
+legend, .a11y-hidden {
+  background-color: red;
+  /* display: none; */
+  /* visibility: hidden; */
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+/* 기본 스타일 */
 body {
   /* 브라우저에 따라 디폴트 값이 흰색이 아닐 수도 있다.*/
   background-color: #fff; 
+  color: #181818; /* #000 브라우저마다 촌스러워 보이는 색깔이라는 이야기가 있움;; */
+  font-family: 'Noto Sans Regular', sans-serif;
 }
 /* 컨테이너 */
 .container {
@@ -51,6 +77,38 @@ body {
 /* 헤더 */
 .header {
   background-color: yellow;
+  /* position: relative;
+  height: 100px; */
+}
+/* 로고 */
+.logo {
+  background-color: blue;
+  float: left;
+  margin: 0;
+  padding: 1em;
+  /* position: absolute;
+  left: 100px;
+  top: 50%;
+  transform: translateY(-50%) */
+}
+.member {
+  background-color: aqua;
+  float: right;
+}
+.member li {
+  float: left;
+}
+/* 검색폼 */
+.search-form {
+  /* background-color: tomato; */
+  clear: both;
+  float: right;
+  margin-top: -50px;
+}
+.search-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 /* 네비게이션 */
 .navigation {
@@ -59,43 +117,66 @@ body {
 }
 /* 메인 콘텐츠 */
 .main {
-  display: flex;
+  /* display: flex; */
   /* flex-direction: row || row-reverse || column || column-reverse */
   /* flex-direction: row;  */
   /* nowrap (default) */
   /* flex-wrap: wrap; */
   /* direction wrap 의 속기법*/
-  flex-flow: row wrap;
-  justify-content: space-between; /* 남아있는 여백을 알아서 만들어줌 */
+  /* flex-flow: row wrap; */
+  /* 남아있는 여백을 알아서 만들어줌 */
+  /* justify-content: space-between;  */
   /* align-items: center; */
   /* align-content: space-between; */
-  height: 60vh;
   background-color: pink;
+  /* 1. float된 요소의 높이를 인식하게 되는 트릭 */
+  /* overflow: scroll; */
+  /* 4. float 주기 */
+  /* float: left; */
 }
+.clearfix::after {
+  content: '';
+  clear: both;
+  /* 인라인 요소는 마진값을 줄 수 없으므로 */
+  display: block;
+}
+/* .clear {
+  clear: both;
+} */
 .main section {
   /* width: 400px; */
-  /* height: 10vh; */
   height: 30vh;
-  background-color: teal;
 }
 .recommend-book {
   width: 350px;
+  background-color: teal;
+  float: left;
+  /* height: 400px; */
 }
 .news {
+  float: left;
   width: 650px;
+  background-color: tan;
 } 
 .board {
+  float: left;
   width: 350px;
+  background: skyblue;
 }
 .main .favorite-site {
-  order: 1;
+  /* order: 1; */
+  float: right;
   width: 250px;
   background-color: red;
 }
 .twitter {
+  float: left;
   width: 400px;
+  background-color: blueviolet;
 }
 .slogan {
+  margin-top: 20px;
+  clear: left;
   height: 10vh;
   background-color: orange;
 }
@@ -103,4 +184,3 @@ body {
   height: 10vh;
   background-color: skyblue;
 }
-
