@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.fix {
+  background-color: yellow;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 200px;
+}
+.sticky {
+  background-color: pink;
+  /* width: 80%; */
+  padding: 20px;
+  position: sticky;
+  top: 10px;
+  left: 0;
+  right: 0;
+}
