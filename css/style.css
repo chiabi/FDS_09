@@ -12,6 +12,9 @@
   border: 0;
   box-sizing: border-box;
 }
+.main {
+  display: block;
+}
 ul {
   list-style-type: none;
 }
@@ -79,78 +82,68 @@ body {
 .header {
   background-color: #fff;
   padding: 0 0 10px 0;
-  /* position: relative;
-  height: 100px; */
-  position: relative;
-  /* top: 50px;
-  left: 100px; */
+  /* 벤더 프리픽스는 원래 속성 보다 먼저 쓴다. */
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+  -ms-grid-rows: 50px 50px;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 50px 50px;
 }
 /* 로고 */
 .logo {
   margin: 0;
-  position: absolute;
-  left: 50px;
-  top: 50%;
-  /* 익스 9에서는 쓸 수 없다. */
-  transform: translateY(-50%)
-  /* 아래는 콘텐츠가 고정된 사이즈일 경우 */
-  /* margin-top: -17px;  */
-  
-  /* position: absolut
-  /* right:50px */
-  /* padding: 1em; */
-  /* float: left; */
-  /* background-color: blue; */
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  /* grid-row: 1 / span 2; */
+  background-color: darkgoldenrod;
 }
 .logo a, .logo img {
   display: block;
-  line-height: 1;
 }
 .member {
-  text-align: right;
-  font-size: 0;
-  position: relative;
-  right: -10px;
-  margin-bottom: 10px;
-  /* float: right; */
-  /* background-color: aqua; */
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: flex-end;
+  background-color: red;
 }
 .member li {
-  display: inline;
-  font-size: 1rem;
-  /* margin-left: 5px; */
-  /* float: left; */
-  /* background-color: blueviolet; */
+
 }
-.member li::before {
+/* .member li::before {
   content: "|"
 }
 .member li:first-child::before {
   content: '';
-}
+} */
 /* dom 트리에 액세스할 때 생략할 수 있는 단계는 생략해주자
   .member li a -> .member a */
 .member a {
-  padding: 10px;
-  /* width: 200px; */
-  display: inline-block
-  /* background-color: tan; */
+
 }
 /* 검색폼 */
 .search-form {
-  /* float: right;
-  clear: both;
-  margin-top: -50px; */
-  text-align: right;
-  /* background-color: tomato; */
-  /* margin-top: 10px; 마진병합 */
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: tan;
 }
 .search-form fieldset {
   border: 0;
   padding: 0;
   margin: 0;
-  /* display: flex;
-  justify-content: flex-end; */
 }
 input[type="search"] {
   height: 35px;
