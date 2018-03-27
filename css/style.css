@@ -81,39 +81,61 @@ body {
 /* 헤더 */
 .header {
   background-color: #fff;
-  padding: 0 0 10px 0;
+  /* padding: 0 0 10px 0; */
   /* 벤더 프리픽스는 원래 속성 보다 먼저 쓴다. */
+  position: relative;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 30% 70%;
+  -ms-grid-columns: 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px;
+  /* grid-template-columns: repeat(12, 65px); */
   -ms-grid-rows: 50px 50px;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: repeat(12, 65px);
   grid-template-rows: 50px 50px;
+  /* IE11에서는 지원하지 않음 */
+  grid-column-gap: 20px;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.2);
+  background: repeating-linear-gradient(to right, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.2) 65px, transparent 65px, transparent 85px);
 }
 /* 로고 */
 .logo {
   margin: 0;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
+  -ms-grid-column-span: 4;
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
-  grid-column: 1 / 2;
+  grid-column: 1 / 4;
   grid-row: 1 / 3;
+  /* grid-column: 1 / span 3;
+  grid-row: 1 / span 2; */
   /* grid-row: 1 / span 2; */
   background-color: darkgoldenrod;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo a, .logo img {
   display: block;
 }
 .member {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 3;
+  -ms-grid-column: 10;
+  -ms-grid-column-span: 13;
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
-  grid-column: 2 / 3;
+  grid-column: -4 / -1;
   grid-row: 1 / 2;
+  /* grid-column: -1 / span 3;
+  grid-row: 1 / span 2; */
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   background-color: red;
 }
 .member li {
@@ -132,13 +154,18 @@ body {
 }
 /* 검색폼 */
 .search-form {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 3;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 13;
   -ms-grid-row: 2;
   -ms-grid-row-span: 3;
-  grid-column: 2 / 3;
+  grid-column: -1 / -7;
+  /* grid-column: -1 / span 5; */
+  /* grid-column: 7 / span 5; */
   grid-row: 2 / 3;
   background-color: tan;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .search-form fieldset {
   border: 0;
