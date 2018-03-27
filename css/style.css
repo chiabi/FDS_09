@@ -83,32 +83,56 @@ body {
 /* 로고 */
 .logo {
   background-color: blue;
-  float: left;
   margin: 0;
-  padding: 1em;
+  /* padding: 1em; */
+  /* float: left; */
   /* position: absolute;
   left: 100px;
   top: 50%;
   transform: translateY(-50%) */
 }
 .member {
-  background-color: aqua;
-  float: right;
+  text-align: right;
+  font-size: 0;
+  position: relative;
+  right: -10px;
+  /* float: right; */
+  /* background-color: aqua; */
 }
 .member li {
-  float: left;
+  display: inline;
+  font-size: 1rem;
+  /* margin-left: 5px; */
+  /* float: left; */
+  /* background-color: blueviolet; */
+}
+.member li::before {
+  content: "|"
+}
+.member li:first-child::before {
+  content: '';
+}
+/* dom 트리에 액세스할 때 생략할 수 있는 단계는 생략해주자
+  .member li a -> .member a */
+.member a {
+  padding: 10px;
+  /* width: 200px; */
+  display: inline-block
+  /* background-color: tan; */
 }
 /* 검색폼 */
 .search-form {
-  /* background-color: tomato; */
+  /* float: right;
   clear: both;
-  float: right;
-  margin-top: -50px;
+  margin-top: -50px; */
+  background-color: tomato;
 }
 .search-form fieldset {
   border: 0;
   padding: 0;
   margin: 0;
+  /* display: flex;
+  justify-content: flex-end; */
 }
 /* 네비게이션 */
 .navigation {
