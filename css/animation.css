@@ -1,0 +1,80 @@
+@charset "utf-8";
+body {
+  margin: 100px;
+}
+/* 트랜지션 애니메이션 */
+.box {
+  background-color: yellow;
+  border: 5px solid #000;
+  width: 300px;
+  height: 300px;
+  /* text-align: center; */
+  /* line-height: 300px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 오리지널 영역에 전이효과 지정 */
+  transition: all 500ms;
+}
+.box:hover {
+  border-radius: 50% 0 50% 0;
+  /* transform: rotate(360deg); */
+  /* transform: translateX(50px); */
+  /* transform: skew(25deg) */
+  /* 제자리에서 다른 영역에 영향없이 겹치면서 넣는 효과 */
+  /* transform: scale(1.2); */
+  /* 효과는 적은 순서대로 순차적으로 일어난다. */
+  transform: rotate(360deg) translateX(50px) scale(1.2)
+}
+
+/* CSS3 애니메이션 규칙 */
+/* at 규칙 : 중괄호 블록 안에 중괄호 블록 : 이 속성 값으로 속성 묶음을 쓰겠다~ ?? */
+/* 이 애니메이션 선언은 호출하지 않으면 동작하지 않는다. 이름은 대소문자를 구분한다 .*/
+@keyframes text-ani {
+  /* 시작점은 생략해도 된다.*/
+  from {
+    font-size: 20px;
+  }
+  to {
+    font-size: 40px;
+  }
+}
+@keyframes text-move {
+  /* 키프레임이 있다 트랜지션과 다른점 시작과 끝밖에 없는 트랜지션과 달리 장면을 분기할 수 있다. */
+  0% {
+    transform: translate(0)
+  }
+  50% {
+    transform: translate(30%, 50%)
+  }
+  100% {
+    transform: translate(100%, 100%)
+  }
+}
+.text {
+  width: 800px;
+  margin: 50px auto;
+  height: 300px;
+  border: 5px solid #000;
+  background-color: pink;
+}
+.inner {
+  display: inline-block;
+  animation-name: text-ani, text-move;
+  animation-duration: 3000ms;
+  animation-fill-mode: forwards; /* 기본은 backwards(다시 되돌아감) */
+  animation-delay: 3000ms, 0;
+  /* 애니메이션 재생 횟수가 한번 이상이어야 한다.*/
+  animation-iteration-count: infinite;
+  /* 정방향 역방향으로 반복될 수 있도록 한다(부드러운 애니메이션 처리) 끊어지는 애니메이션을만들고 싶다면 기본값으로*/
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out, .96,1.9,0,1.4;
+  /* 애니메이션 상태를 제어 */
+  animation: text-ani 3000ms forwards 3000ms infinite alternate ease-in-out, text-move 3000ms forwards 0 infinite alternate .96,1.9,0,1.4;
+  background: aqua;
+}
+.inner:hover {
+  animation-play-state: paused;
+}
+/* 트랜스 폼은 자신의 영역을 가지면서 제어 */
+/* inline은 line-height에 있기때문에 애니메이션 안 먹는 것처럼 보임 */

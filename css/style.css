@@ -36,42 +36,26 @@ legend, .a11y-hidden {
   clip: rect(0, 0, 0, 0);
 }
 /* 기본 스타일 */
+html {
+  /* html의 기본적인 폰트사이즈는 16px이다. */
+  font-size: 10px
+}
 body {
   /* 브라우저에 따라 디폴트 값이 흰색이 아닐 수도 있다.*/
   background-color: #fff; 
   color: #181818; /* #000 브라우저마다 촌스러워 보이는 색깔이라는 이야기가 있움;; */
   font-family: 'Noto Sans Regular', sans-serif;
+  /* 폰트 사이즈를 따로 지정하지 않으면 1em이다. */
+  font-size: 1.4rem; 
 }
+/* em 단위가 동작하는 원리 */
+/* div {
+  font-size: 1.5em;
+} */
 /* 컨테이너 */
 .container {
   height: 100vh;
   background-color: gray;
-  /* 속기법 단축 표기법 */
-  /* border: 10px solid #000; */
-  /* 
-    border-width, 
-    border-style,
-    border-color 이것도 사실 속기법이다.
-  */
-  /* 
-    border-top-with, 
-    border-right-width, 
-    border-bottom-width, 
-    border-left-width 
-    (시계방향)
-  */
-  /* padding: 50px; */
-  /*
-    padding-top,
-    padding-right...
-  */
-  /* margin: 0 auto;  */
-  /* margin도 컨테이너 박스의 넓이지만 투명한 영역인 것이다. */
-  /* 
-    auto를 넣을 경우 가운데 정렬된 것처럼 보이지만 사실 투명한 영역이(margin) 나머지를 차지하고 있는 것이다. 
-    블록으로 영역을 다 차지하고 있어서 다른 요소가 올라오지 못하는 것
-  */
-  /* 속기법: 위,아래 - 좌, 우*/
 }
 /* 레이아웃공통 */
 .header, .main, .slogan {
@@ -86,23 +70,11 @@ body {
   position: relative;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px;
-  /* grid-template-columns: repeat(12, 65px); */
   -ms-grid-rows: 50px 50px;
   grid-template-columns: repeat(12, 65px);
   grid-template-rows: 50px 50px;
   /* IE11에서는 지원하지 않음 */
   grid-column-gap: 20px;
-}
-.header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 0, 0, 0.2);
-  background: repeating-linear-gradient(to right, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.2) 65px, transparent 65px, transparent 85px);
 }
 /* 로고 */
 .logo {
@@ -113,10 +85,6 @@ body {
   -ms-grid-row-span: 3;
   grid-column: 1 / 4;
   grid-row: 1 / 3;
-  /* grid-column: 1 / span 3;
-  grid-row: 1 / span 2; */
-  /* grid-row: 1 / span 2; */
-  background-color: darkgoldenrod;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,24 +99,13 @@ body {
   -ms-grid-row-span: 2;
   grid-column: -4 / -1;
   grid-row: 1 / 2;
-  /* grid-column: -1 / span 3;
-  grid-row: 1 / span 2; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: red;
 }
 .member li {
 
 }
-/* .member li::before {
-  content: "|"
-}
-.member li:first-child::before {
-  content: '';
-} */
-/* dom 트리에 액세스할 때 생략할 수 있는 단계는 생략해주자
-  .member li a -> .member a */
 .member a {
 
 }
@@ -159,10 +116,8 @@ body {
   -ms-grid-row: 2;
   -ms-grid-row-span: 3;
   grid-column: -1 / -7;
-  /* grid-column: -1 / span 5; */
-  /* grid-column: 7 / span 5; */
   grid-row: 2 / 3;
-  background-color: tan;
+  /* background-color: tan; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -196,9 +151,179 @@ input[type="search"] {
 
 /* 네비게이션 */
 .navigation {
-  height: 10vh;
-  background-color: lime;
+  /* height: 100px;
+  overflow: auto; */
+  /* background-color: #988574;
+  background-image: url("../images/normal.jpg");
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: 50% 0; */
+  /* background-attachment: fixed; */
+  /* 백그라운드 속기법, 재정의 시 문제가 생길 수 있다. 나머지 정의하지 않은 속성들은 기본값으로 들어간다. */
+  /* background: #988574 url("../images/normal.jpg") 100% 0% / 200px no-repeat; */
+  /* 멀티 백그라운드 방식*/
+  /* background: url("../images/normal.jpg") no-repeat 0% 0% / 200px scroll, url("../images/small.jpg") no-repeat 100% 0% / 200px scroll; */
+  /* 다음의 스타일은 color의 위치가 상관없다. (캐스캐이드 문제가 없다) */
+  /* background-color: #988574;
+  background-image: url("../images/normal.jpg"), url("../images/small.jpg");
+  /* 둘 다 같은 값을 줄 거라면 생략해도 된다.  repeat, repeat */
+  /* background-repeat: no-repeat;  */
+  /* 0은 단위를 생략하는 편이다. */
+  /* background-position: 0 0, 100% 0; 
+  background-size: 200px, 300px; */
+  /* scroll, scroll*/
+  /* background-attachment: scroll;  */
+  /* 그래디언트 */
+  /* background-image: linear-gradient(red, blue); */
+  /* background-image: linear-gradient(to right, red, blue); */
+  /* background-image: linear-gradient(45deg, red, blue); */
+  /* background-image: linear-gradient(-45deg, red, blue); */
+  /* 0은 to top의 의미이다 */
+  /* background-image: linear-gradient(0, red, blue);  */
+  /* 180deg to bottom의 의미이다. */
+  /* background-image: linear-gradient(180deg, red, blue);  */
+  /* 여러 그래디언트 컬러 */
+  /* background-image: linear-gradient(180deg, red, orange, yellow, green, blue, purple); */
+  /* 컬러 패턴을 만들고 싶을때*/
+  /* 백그라운드 이미지이다 라는 것은 멀티 백그라운드가 가능하다 */
+  /* background-image: linear-gradient(180deg, 
+  red,
+  red 20%, 
+  orange 20%, 
+  orange 40%, 
+  yellow 40%, 
+  yellow 60%, 
+  green 60%,  
+  green 80%,  
+  blue 80%,
+  blue 100%
+  ) */
+  /* 배경 이미지가 겹쳤을 때 순서는 먼저 선언한 이미지가 위로 온다. */
+  /* background-image: linear-gradient(180deg, 
+  red,
+  red 20%, 
+  orange 20%, 
+  orange 40%, 
+  yellow 40%, 
+  yellow 60%, 
+  green 60%,  
+  green 80%,  
+  blue 80%,
+  blue 100%
+  ), url('../images/normal.jpg'); */
+  /* background-image: url('../images/normal.jpg'), linear-gradient(180deg, 
+  red,
+  red 20%, 
+  orange 20%, 
+  orange 40%, 
+  yellow 40%, 
+  yellow 60%, 
+  green 60%,  
+  green 80%,  
+  blue 80%,
+  blue 100%
+  );
+  background-repeat: no-repeat, repeat;
+  background-position: 0 0;
+  background-size: 200px, 100%;  */
+  /* 알파값을 사용해 이미지위에 컬러 오버레이 할 수 있다. */
+  /* background-image: linear-gradient(180deg, 
+  rgba(255, 0, 0, .2),
+  rgba(255, 0, 0, .2) 35%, 
+  rgba(0, 255, 0, .2) 35%, 
+  rgba(0, 255, 0, .2) 70%, 
+  rgba(0, 0, 255, .2) 70%,
+  rgba(0, 0, 255, .2) 100% 
+  ), url('../images/normal.jpg');
+  background-repeat: no-repeat, repeat;
+  background-position: 0 0;
+  background-size: 100%;  */
+  /* 원형(방사형) 그래디언트 */
+  /* background-image: radial-gradient(green, red); */
+  /* 원형 그래디언트의 형태 지정 (정원, 타원)*/
+  /* background-image: radial-gradient(circle, green, red); */
+  /* 원형 그래디언트 위치값 일반 적인 도형패턴처럼 사용가능 */
+  /* background-image: radial-gradient(circle, green 50%, red 50%); */
+  /* at 어느쪽 기준으로 시작할지 */
+  /* background-image: radial-gradient(circle at right top, green 50%, red 50%); */
+  /* background-image: radial-gradient(circle at 100% 0, green 50%, red 50%); */
+  /* background-image: radial-gradient(circle at 70% 20%, green 50%, red 50%); */
+  /* 반복 그래디언트 */
+  /* background-image: repeating-linear-gradient(90deg, red, red 10%, blue 10%, blue 20%); */
+  /* background-image: repeating-linear-gradient(90deg, red, red 20%, blue 20%, blue calc(20% + 20px)); */
+  /* background-image: repeating-radial-gradient(green 50px, yellow 100px); */
+  /* background-image: repeating-radial-gradient(green, green 50px, yellow 50px, yellow 100px); */
+  background-color: #988574;
+  /* border-top관련 속기법 */
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding-top: 0.5eml
+  /* box-shadow로 보더의 기능을 대체할 수 있다. */
 }
+/* inline-block, flex, grid, float을 할지 생각 */
+.menu {
+  width: 1000px;
+  margin: 0 auto;
+  /* background-color: blueviolet; */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+}
+.menu span {
+  display: block;
+  font-size: 1.8rem;
+  font-family: 'Noto Sans Bold', sans-serif;
+  padding: 0.5em 0;
+  /* background-color: green; */
+  cursor: pointer; 
+  /* x offset(이동), y offset(이동), blur(흐릿한 효과), color */
+  text-shadow: 0 1px 0 #000, 1px 0 0 #000, 0 -1px 0 #000, -1px 0 0 #000;
+  /* transition-property: color, font-size;
+  transition-duration: 5000ms, 3000ms; */
+  /* 어떤 시퀀스에대해 다른 애니메이션이 이어지는 것처럼 할 수 있다. */ 
+  /* transition-delay: 0s, 5s; 
+  transition-timing-function: cubic-bezier(.18, -0.7, .82, .67);transition-property: color, font-size;
+  transition-duration: 5000ms, 3000ms; */
+  /* 어떤 시퀀스에대해 다른 애니메이션이 이어지는 것처럼 할 수 있다. */ 
+  /* transition-delay: 0s, 5s; 
+  transition-timing-function: cubic-bezier(.18, -0.7, .82, .67); */
+
+  /* transition: color 0.5s 0s cubic-bezier(.18, -0.7, .82, .67), font-size 3s 5s cubic-bezier(.18, -0.7, .82, .67) */
+  transition: all 5s ease;
+}
+/* 가상 클래스 선택자 :hover, :focus, :active... */
+.menu span:hover,
+.menu li:focus span {
+  color: #ff0;
+  /* font-size: 2rem; */
+}
+.sub-menu {
+  /* background: orangered; */
+  margin-top: 5px;
+}
+.sub-menu li {
+  margin: 0.5em 0 0.5em 1em;
+}
+.sub-menu a {
+  /* background: teal; */
+  display: block; /* 인라인이라면 패딩을 줬을때 겹칠 수 있다.*/
+  padding: 0.5em 0;
+}
+/* 
+  float으로 처리하는 방법
+  자식 선택자 : ie6에서는 쓸 수 없어서 다시 자식선택자 안의 하위요소를 재정의했어야했다.
+*/
+/* .menu {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: blueviolet;
+  color: #fff;
+}
+.menu > li {
+  float: left;
+} */
+
 /* 메인 콘텐츠 */
 .main {
   /* display: flex; */
