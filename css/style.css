@@ -52,10 +52,37 @@ body {
 /* div {
   font-size: 1.5em;
 } */
+
+/* 그리드 토글버튼 */
+.btn-grid {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  background-color: #000;
+  color: #fff;
+  padding: 1em;
+  border-radius: 5px;
+}
 /* 컨테이너 */
 .container {
-  height: 100vh;
-  background-color: gray;
+  position: relative;
+}
+/* 그리드 가이드 */
+.is-act::before {
+  content: '';
+  width: 1000px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 3;
+  transform: translateX(-50%);
+  background-image: repeating-linear-gradient(90deg, 
+                    hsla(70, 90%, 60%, .2), 
+                    hsla(70, 90%, 60%, .2) 65px, 
+                      transparent 65px, 
+                      transparent 85px
+                    );
 }
 /* 레이아웃공통 */
 .header, .main, .slogan {
@@ -257,7 +284,7 @@ input[type="search"] {
   /* border-top관련 속기법 */
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
-  padding-top: 0.5eml
+  padding-top: 0.5em
   /* box-shadow로 보더의 기능을 대체할 수 있다. */
 }
 /* inline-block, flex, grid, float을 할지 생각 */
@@ -290,7 +317,7 @@ input[type="search"] {
   transition-timing-function: cubic-bezier(.18, -0.7, .82, .67); */
 
   /* transition: color 0.5s 0s cubic-bezier(.18, -0.7, .82, .67), font-size 3s 5s cubic-bezier(.18, -0.7, .82, .67) */
-  transition: all 5s ease;
+  transition: color 5s ease;
 }
 /* 가상 클래스 선택자 :hover, :focus, :active... */
 .menu span:hover,
@@ -303,84 +330,204 @@ input[type="search"] {
   margin-top: 5px;
 }
 .sub-menu li {
-  margin: 0.5em 0 0.5em 1em;
+  margin: 0.2em 0 0.2em 1em;
 }
 .sub-menu a {
   /* background: teal; */
   display: block; /* 인라인이라면 패딩을 줬을때 겹칠 수 있다.*/
   padding: 0.5em 0;
 }
-/* 
-  float으로 처리하는 방법
-  자식 선택자 : ie6에서는 쓸 수 없어서 다시 자식선택자 안의 하위요소를 재정의했어야했다.
-*/
-/* .menu {
-  width: 1000px;
-  margin: 0 auto;
-  background-color: blueviolet;
-  color: #fff;
-}
-.menu > li {
-  float: left;
-} */
 
 /* 메인 콘텐츠 */
 .main {
-  /* display: flex; */
-  /* flex-direction: row || row-reverse || column || column-reverse */
-  /* flex-direction: row;  */
-  /* nowrap (default) */
-  /* flex-wrap: wrap; */
-  /* direction wrap 의 속기법*/
-  /* flex-flow: row wrap; */
-  /* 남아있는 여백을 알아서 만들어줌 */
-  /* justify-content: space-between;  */
-  /* align-items: center; */
-  /* align-content: space-between; */
-  background-color: pink;
-  /* 1. float된 요소의 높이를 인식하게 되는 트릭 */
-  /* overflow: scroll; */
-  /* 4. float 주기 */
-  /* float: left; */
-}
+  display: -ms-grid;
+  /* -ms-grid-columns: 4fr 20px 5fr 20px 3fr; */
+  -ms-grid-columns: 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px;
+  -ms-grid-rows: auto auto;
+  display: grid;
+  grid-template-columns: repeat(12, 65px);
+  grid-column-gap: 20px;
+  grid-template-rows: auto auto; 
+  grid-template-areas: 
+  "book  book  book  book  news    news    news    news    news    news news news"
+  "board board board board twitter twitter twitter twitter twitter site site site";
+  /* grid-template: 
+    'book news news'
+    'board twitter favorite' / 4fr 5fr 3fr; */
+  /* background-color: pink; */
+} 
 .clearfix::after {
   content: '';
   clear: both;
   /* 인라인 요소는 마진값을 줄 수 없으므로 */
   display: block;
 }
-/* .clear {
-  clear: both;
-} */
-.main section {
-  /* width: 400px; */
+/* .main section {
   height: 30vh;
-}
+} */
+/* 추천서적 */
 .recommend-book {
-  width: 350px;
-  background-color: teal;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  /* -ms-grid-column: 1;
+  -ms-grid-column-span: 1; 
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;  */
+  grid-area: book;
+  /* background-color: teal; */
+}
+/* 내 코드*/
+/* .recommend-book-heading {
+  padding-top: 15px;
+  padding-left: 65px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: 'Noto Sans Bold', sans-serif;
+}
+.recommend-book-heading::before {
+  content: '';
   float: left;
-  /* height: 400px; */
+  margin-left: -65px;
+  width: 60px;
+  height: 60px;
+  background: url("images/sprite_main.png") 0 0 no-repeat;
+}
+.recommend-book-heading .en-heading {
+  display: block;
+  color: #abd375;
+}
+.recommend-book-cover {
+  margin-top: 20px;
+  padding: 0 45px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.recommend-book-cover img {
+  max-width: 100%;
+}
+.recommend-book-detail {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+.recommend-book-author {
+  display: inline;
+}
+.recommend-book-author-name {
+  display: inline;
+}
+.recommend-book-grade {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #abd375;
+}
+.recommend-book-summary {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 24px;
+} */
+
+/* 추천서적 제목*/
+.recommend-book-heading {
+  /* background-color: yellow; */
+  background: url("images/sprite_main.png") no-repeat 0 0;
+  margin: 1em 0;
+  padding-left: 65px;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+
+}
+.en-heading {
+  display: block;
+}
+.recommend-book-heading .en-heading {
+  color: #abd375; 
+}
+/* 추천서적 커버이미지 */
+.recommend-book-cover {
+  /* background-color: pink; */
+  width: 15em;
+  margin: 1em auto;
+  text-align: center;
+}
+.recommend-book-cover img {
+  /* 원본이상 커지지 않도록 되도록 이미지 사이즈를  max-width 속성으로 지정한다. */
+  max-width: 100%;
+}
+/* 추천서적 저자 및 평점*/
+.recommend-book-detail {
+  /* background-color: aqua; */
+  text-align: center;
+  margin: 1em 0;
+}
+.recommend-book-author, .recommend-book-author-name {
+  display: inline;
+}
+.recommend-book-author {
+  /* background-color: orange; */
+}
+.recommend-book-author-name {
+  /* background-color: lime; */
+}
+.recommend-book-grade {
+  /* background-color: tan; */
+  font-size: 2em;
+  color: #abd375; 
+}
+.recommend-book-summary {
+  /* background-color: purple; */
+  line-height: 1.5;
 }
 .news {
-  float: left;
-  width: 650px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 15;
+  /* -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1; */
+  grid-area: news;
   background-color: tan;
 } 
 .board {
-  float: left;
-  width: 350px;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  /* -ms-grid-column: 1;
+  -ms-grid-column-span: 1; 
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1; */
+  grid-area: board;
   background: skyblue;
 }
 .main .favorite-site {
-  /* order: 1; */
-  float: right;
-  width: 250px;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 19;
+  -ms-grid-column-span: 5;
+  /* -ms-grid-column: 5;
+  -ms-grid-column-span: 1; 
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1; */
+  grid-area: site;
   background-color: red;
 }
 .twitter {
-  float: left;
-  width: 400px;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 9;
+  /* -ms-grid-column: 3;
+  -ms-grid-column-span: 1; 
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1; */
+  grid-area: twitter;
   background-color: blueviolet;
 }
 .slogan {
