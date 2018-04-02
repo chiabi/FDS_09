@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>회원가입 - 웹카페</title>
+</head>
+<body>
+  <h1 class="join-heading">회원가입</h1>
+  <!-- 
+    id, class, name에 이름이 같더라도 용도는 다 다르다
+      id: 유니크 요소 찾을때
+      class: 스타일링 할때, 요소 찾을때
+      name: 서버 데이터 베이스에 저장할 필드 이름 
+  -->
+  <!-- 인라인 방식으로 action에 javascript: 프로토콜 연결같은 거는 하면 안됨 -->
+  <form action="https://formspree.io/chiabi88@gmail.com" class="join-form" id="join-form" name="join-form" method="post">
+    <fieldset>
+      <legend>회원가입폼</legend>
+      <!-- <p><em>*</em>는 반드시 입력하여야 하는 항목입니다.</p>
+      <dl>
+        <dt><label for="join-name">성명<em>*</em></label></dt>
+        <dd><input type="text" id="join-name" name="join-name" placeholder="홍길동" required></dd>
+        <dt><label for="join-id">아이디<em>*</em></label></dt>
+        <dd>
+          <input type="text" id="join-id" name="join-id" placeholder="Guest" required>
+          <button type="button">ID 중복확인</button>
+        </dd>
+        <dt><label for="join-pw">암호<em>*</em></label></dt>
+        <dd><input type="password" id="join-pw" name="join-pw" placeholder="영문/숫자 4~8자 이내" required></dd>
+        <dt><label for="join-pw-confirm">암호 확인<em>*</em></label></dt>
+        <dd><input type="password" id="join-pw-confirm" required></dd>
+        <dt><label for="join-addr">주소</label></dt>
+        <dd>
+          <input type="text" id="join-addr-num1" name="join-addr-num1" aria-label="우편번호 앞3자리" maxlength="3">
+          -
+          <input type="text" id="join-addr-num3" name="join-addr-num2" aria-label="우편번호 뒤3자리" maxlength="3">
+          <button type="button">우편번호 찾기</button>
+          <input type="text" id="join-addr" name="join-addr" placeholder="입력 예) 서울시 마포구 상수동 123-12 한주빌딩 5층">
+        </dd>
+        <dt><label for="join-tel">연락처</label></dt>
+        <dd><input type="tel" id="join-tel" pattern="[0-9]{10}" name="join-tel" placeholder="입력 예) 01042452375"></dd>
+        <dt><label for="join-email">이메일<em>*</em></label></dt>
+        <dd><input type="email" id="join-email" placeholder="입력 예) seulbimin@gamil.com" required></dd>
+        <dt>메일링 리스트 가입</dt>
+        <dd>
+          <p>메일링리스트에 가입하시면 WebCafe의 뉴스레터를 받아보실 수 있습니다.</p>
+          <input type="radio" id="join-newsletter-yes" name="join-newsletter"><label for="join-newsletter-yes">예</label>
+          <input type="radio" id="join-newsletter-no"  name="join-newsletter"><label for="join-newsletter-no">아니오</label>
+        </dd>
+      </dl>
+      <div class="join-btn">
+        <button type="submit">회원가입</button>
+        <button type="reset">취소</button>
+      </div> -->
+
+      
+      <p class="join-massage">
+        <em>필수</em>는 반드시 입력하여야 하는 항목입니다.
+      </p>
+      <!-- <p><em aria-label="필수">*</em>는 반드시 입력하여야 하는 항목입니다.</p> -->
+      <p class="user-name">
+        <label for="user-name">성명<em>필수</em></label>
+        <input type="text" id="user-name" required placeholder="예) 홍길동">
+      </p>
+      <p class="user-id">
+        <label for="user-name">아이디<em>필수</em></label>
+        <input type="text" id="user-id" required placeholder="예) Guest">
+        <button type="button" class="id-check">ID중복확인</button>
+      </p>
+      <p class="user-pw">
+        <label for="user-pw">암호<em>필수</em></label>
+        <input type="password" id="user-pw" required placeholder="영문과 숫자를 혼합하여 6자 이상">
+      </p>
+      <p class="user-re-pw">
+        <label for="user-re-pw">암호확인<em>필수</em></label>
+        <input type="password" id="user-re-pw" required>
+      </p>
+      <p class="user-address">
+        <label for="user-address">주소</label>
+        <button class="find-address" type="button">우편번호 찾기</button>
+        <input type="text" id="user-zipcode1" title="우편번호 앞 3자리">
+        - <input type="text" id="user-zipcode2" title="우편번호 뒤 3자리">
+        <!-- title을 더해 좀 더 부연설명해준다 -->
+        <input type="text" id="user-address" title="상세주소" placeholder="입력 예) 서울시 마포구 상수동 123-12 한주빌딩 5층">
+      </p>
+      <p class="user-tel">
+        <label for="user-tel">연락처</label>
+        <input type="tel" id="user-tel">
+      </p>
+      <p class="user-email">
+        <label for="user-email">이메일<em>필수</em></label>
+        <input type="email" id="user-email">
+      </p>
+      <p class="mailing">
+        <strong>메일링 리스트 가입</strong>
+        <!-- name은 같은 그룹으로 묶는 것 -->
+        <!-- value는 입력이 아니라 선택이라 서버에 해당 값을 날려야하니까 주는 것 -->
+        <input type="radio" name="mailing" value="yes" id="mailing-yes" title="메일링 리스트에 가입여부" checked><!-- checked논리 속성을 모두에 넣었다면 마크업 순서에 따라...-->
+        <label for="mailing-yes">예</label>
+        <input type="radio" name="mailing" value="no" id="mailing-no" title="메일링 리스트에 가입여부">
+        <label for="mailing-no">아니오</label>
+      </p>
+      <div class="btn-container">
+        <button class="join" type="submit">회원가입</button>
+        <button class="reset" type="reset">취소</button>
+      </div>
+    </fieldset>
+  </form>
+</body>
+</html>
