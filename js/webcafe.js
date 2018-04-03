@@ -48,34 +48,26 @@
 //   this.pause();
 // });
 
-// jQuery
-// autoplay 속성은 페이지 로딩 시점에서 자동 시작하기때문에
-// video 관련 API를 이용하여 재생과 정지를 제어할 수 있음.
 $(document).ready(function(){
-  var container = $('.container');
-  var grid = document.querySelector('.btn-grid');
-  var video = $('.news-video');
-  grid.on('click', function(){
-      container.toggleClass('is-act');
-  });
-  video.on('mouseover focusin', function(){
-      this.play();
-  });
-  video.on('mouseout focusout', function(){
-      this.pause();
-  });
+    var container = $('.container');
+    var grid = $('.btn-grid'); // 내부에서는 제이쿼리에 의해 객체가 생성
+    var video = $('.news-video'); // 하나가 들어오더라도 배열 객체가 생성된다.
+    video.get(0).volume = 0.0;
+
+    // 멀티이벤트 실행: .on(), .bind()
+    video.on('mouseover focusin', function(){
+        // $(this) // 모든 배열객체의 this
+        // video[0].play();
+        // this.play();
+        this.volume = 1.0;
+    });
+    video.on('mouseout focusout', function(){
+        // $(this) // 모든 배열객체의 this
+        this.pause();
+        this.volume = 0;
+    });
+    grid.on('click', function(){
+        $('.container').toggleClass('is-act');
+    });
 });
-// Javascript
-// var video = document.querySelector('.news-video');
-// var eventOn = ['mouseenter', 'focusin'];
-// var eventOff = ['mouseleave', 'focusout'];
-// for(event of eventOn){
-//     video.addEventListener(event, function(){
-//         video.play();
-//     });
-// }
-// for(event of eventOff){
-//     video.addEventListener(event, function(){
-//         video.pause();
-//     });
-// }
+

@@ -510,7 +510,6 @@ input[type="search"] {
 }
 /* 새소식 날짜 정보 */
 .news-date {
-  background-color: yellow;
   display: block;
   text-align: right;
 }
@@ -540,15 +539,74 @@ input[type="search"] {
   content: '\e80b';
 }
 
+/* 게시판 */
 .board {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 7;
   grid-area: board;
-  background: skyblue;
+  position: relative;
 }
-.main .favorite-site {
+/* 게시판 제목 */
+.board-heading {
+  background-position: 0 -115px;
+  margin-bottom: 0.5em;
+}
+.board-heading .en-heading {
+  color: #c7b39a
+}
+/* 게시판 목록 */
+.board-list {
+  /* background-color: pink; */
+}
+.board-list li {
+  margin-top: 0.5em;
+  /* font-size: 0; */
+  /* overflow: hidden; */
+  /* display: flex;
+  justify-content: space-between; */
+}
+.board-list a,
+.board-list time {
+  vertical-align: middle;
+}
+.board-list a {
+  display: inline-block;
+  /* float: left; */
+  width: calc(100% - 110px);
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.5em 0;
+  text-overflow: ellipsis;
+}
+.board-list li a:hover {
+  color: rgb(255,0,0)
+}
+.board-list li time {
+  display: inline-block;
+  width: 75px;
+  /* float: right; */
+}
+.board-more {
+  position: absolute;
+  top: 1.5em;
+  right: -0.5em;
+  /* 조작할 수 있는 영역을 늘려주자 */
+  padding: 0.5em;
+  font-size: 16px;
+  background-color: transparent;
+  /* background-color: silver; */
+}
+.board-more:hover {
+  color: rgb(255,0,0)
+}
+.board-more.icon-plus::before {
+  color: rgb(30, 140, 60);
+}
+
+/* 인기사이트 */
+.favorite-site {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 19;
@@ -556,20 +614,81 @@ input[type="search"] {
   grid-area: site;
   background-color: red;
 }
+
+/* 트위터 */
 .twitter {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 9;
   -ms-grid-column-span: 9;
   grid-area: twitter;
-  background-color: blueviolet;
+  /* background-color: yellow; */
 }
+/* 트위터 제목 */
+.twitter-heading {
+  background-position: 0 -460px;
+}
+.twitter-heading .en-heading {
+  color: #6aaee6
+}
+/* 트위터 사용자 정보 */
+.twitter-user-info {
+  /* display: inline-block; */
+  float: left;
+  width: calc(100% - 90px);
+  margin-bottom: 1em;
+  /* background-color: greenyellow; */
+}
+.twitter-user-name,
+.twitter-user-id {
+  float: left;
+  /* display: inline; */
+  /* background-color: lime; */
+}
+.twitter-user-name {
+  color: #6aaee6
+}
+.twitter-user-id {
+  font-family: 'Noto Sans Bold', sans-serif;
+  /* font-weight: bold; */
+}
+.twitter-user-id:hover {
+  color: rgb(255,0,0)
+}
+/* 트위터 사용자 프로필 이미지 */
+.twitter-user-profile {
+  float: right;
+  width: 75px;
+  margin: 0 0 0.5em 1em;
+  /* background-color: pink; */
+}
+.twitter-thumbnail {
+  display: block;
+  padding: 0.4em;
+  border: 1px solid #000;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+/* 트위터 본문 */
+.twitter-summary {
+  /* background-color: orange; */
+}
+/* 트위터 날짜 */
+.twitter-date {
+  clear: left;
+  display: block;
+  text-align: right;
+  /* background-color: teal; */
+}
+/* 슬로건 */
 .slogan {
   margin-top: 20px;
   clear: left;
   height: 10vh;
   background-color: orange;
 }
+/* 푸터 */
 .footer {
   height: 10vh;
   background-color: skyblue;
