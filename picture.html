@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>반응형 이미지 이슈</title>
+</head>
+<body>
+  <h1>picture 요소의 활용</h1>
+  <picture>
+    <source srcset="images/large.jpg" media="(min-width: 1200px)">
+    <source srcset="images/medium.jpg" media= "(min-width: 480px) and (max-width :1119px">
+    <source srcset="images/small.jpg" media= "(min-width: 480px)">
+    <img src="images/normal.jpg" alt="picture demo" width="500" height="500">
+  </picture>
+</body>
+</html>

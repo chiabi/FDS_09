@@ -33,6 +33,11 @@ legend, .a11y-hidden {
   clear: both;
   display: block;
 }
+/* 반응형 콘텐츠 */
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
 /* 기본 스타일 */
 html {
   font-size: 10px
@@ -42,6 +47,288 @@ body {
   font-family: 'Noto Sans Regular', sans-serif;
 }
 
+/* 헤더 */
+.header {
+  position: relative;
+}
+/* 로고 */
+.logo {
+  margin: 0;
+}
+
+.member {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.member a:hover,
+.member a:hover {
+  color: yellow;  
+}
+/* 검색폼 */
+.search-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+input[type="search"] {
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: .2em 1em;
+}
+
+
+/* 네비게이션 */
+.menu {
+  font-size: 1.6rem;
+}
+.menu span {
+  display: block;
+  font-size: 1.8rem;
+  font-family: 'Noto Sans Bold', sans-serif;
+  cursor: pointer; 
+}
+.menu span:hover,
+.menu li:focus span {
+  color: #ff0;
+}
+
+/* 메인 콘텐츠 섹션 제목 공통 */
+.main-section-heading {
+  margin: 1em 0;
+  min-height: 60px;
+  padding: 5px 0 0 65px;
+  background-image: url("images/sprite_main.png");
+  background-repeat: no-repeat;  
+}
+.en-heading {
+  display: block;
+}
+/* 메인 콘텐츠 단락 공통 */
+.main [class$="summary"] {
+  line-height: 1.5;
+  margin: 1em 0;
+} 
+/* 추천서적 */
+/* 추천서적 제목*/
+.recommend-book-heading {
+  background-position: 0 0;
+}
+.recommend-book-heading .en-heading {
+  color: #abd375; 
+}
+/* 추천서적 커버이미지 */
+.recommend-book-cover {
+  /* background-color: pink; */
+  width: 75%;
+  margin: 1em auto;
+  text-align: center;
+}
+.recommend-book-cover img {
+  /* 원본이상 커지지 않도록 되도록 이미지 사이즈를  max-width 속성으로 지정한다. */
+  max-width: 100%;
+  height: auto;
+}
+/* 추천서적 저자 및 평점*/
+.recommend-book-detail {
+  text-align: center;
+  margin: 1em 0;
+}
+.recommend-book-author, .recommend-book-author-name {
+  display: inline-block;
+}
+.recommend-book-grade {
+  font-size: 2em;
+  color: #abd375; 
+}
+/* 새소식 */
+/* 새소식 제목 */
+.news-heading {
+  background-position: 0 -230px;
+}
+.news-heading .en-heading {
+  color: #e8ca58
+}
+.news_container {
+  margin: 1em 0;
+}
+.news-video {
+  max-width: 100%;
+  height: auto;
+}
+/* 새소식 날짜 정보 */
+.news-date {
+  display: block;
+  text-align: right;
+}
+.news-date {
+  display: block;
+  margin-top: 15px;
+  padding-left: 20px;
+  font-size: 16px;
+  text-align: right;
+}
+.news-date::before {
+  margin-right: 3px;
+  font-family: 'fontello';
+  content: '\e80b';
+}
+
+/* 게시판 */
+/* 게시판 제목 */
+.board {
+  position: relative;
+}
+.board-heading {
+  background-position: 0 -115px;
+  margin-bottom: 0.5em;
+}
+.board-heading .en-heading {
+  color: #c7b39a
+}
+/* 게시판 목록 */
+.board-list li {
+  margin-top: 0.5em;
+  /* background-color: yellow; */
+  /* font-size: 0; */
+  /* overflow: hidden; */
+  /* display: flex;
+  justify-content: space-between; */
+}
+.board-list a,
+.board-list time {
+  vertical-align: middle;
+}
+.board-list a {
+  display: inline-block;
+  /* float: left; */
+  width: calc(100% - 110px);
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.5em 0;
+  text-overflow: ellipsis;
+}
+.board-list li a:hover {
+  color: rgb(255,0,0)
+}
+.board-list li time {
+  display: inline-block;
+  width: 75px;
+  /* float: right; */
+}
+.board-more {
+  position: absolute;
+  top: 1.5em;
+  right: -0.5em;
+  /* 조작할 수 있는 영역을 늘려주자 */
+  padding: 0.5em;
+  font-size: 16px;
+  background-color: transparent;
+  /* background-color: silver; */
+}
+.board-more:hover {
+  color: rgb(255,0,0)
+}
+.board-more.icon-plus::before {
+  color: rgb(30, 140, 60);
+}
+
+/* 인기사이트 제목 */
+.favorite-site-heading {
+  background-position: 0 -345px;
+}
+.favorite-site-heading .en-heading {
+  color: #eea60a
+}
+/* 인기사이트 리스트 */
+.favorite-site-list {
+  overflow: hidden;
+}
+.favorite-site-list li{
+  counter-increment: number;
+  margin: 1em 0;
+}
+.favorite-site-list li::before {
+  content: counter(number, decimal);
+  background-color: #eea60a;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 .5em; /* 글자가 가운데로 오게 하는 장점이 있음 */
+  margin-right: 1em;
+}
+.favorite-site-list a:hover {
+  color: #ff0000
+}
+
+/* 트위터 */
+/* 트위터 제목 */
+.twitter-heading {
+  background-position: 0 -460px;
+}
+.twitter-heading .en-heading {
+  color: #6aaee6
+}
+/* 트위터 사용자 정보 */
+.twitter-user-info {
+  /* display: inline-block; */
+  float: left;
+  width: calc(100% - 75px - 1em);
+  margin-bottom: 1em;
+  /* background-color: greenyellow; */
+}
+.twitter-user-name,
+.twitter-user-id {
+  float: left;
+  /* display: inline; */
+  /* background-color: lime; */
+}
+.twitter-user-name {
+  color: #6aaee6
+}
+.twitter-user-id {
+  font-family: 'Noto Sans Bold', sans-serif;
+  /* font-weight: bold; */
+}
+.twitter-user-id:hover {
+  color: rgb(255,0,0)
+}
+/* 트위터 사용자 프로필 이미지 */
+.twitter-user-profile {
+  float: right;
+  width: 75px;
+  margin: 0 0 0.5em 1em;
+  /* background-color: pink; */
+}
+.twitter-thumbnail {
+  display: block;
+  padding: 0.4em;
+  border: 1px solid #000;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+/* 트위터 날짜 */
+.twitter-date {
+  clear: left;
+  display: block;
+  text-align: right;
+  /* background-color: teal; */
+}
+/* 슬로건 */
+
+
+/* 푸터 */
+.footer {
+  background-color: #988574;
+  color: #fff;
+}
+.address {
+  font-style: normal;
+  margin-bottom: 1em;
+}
+.copyright {
+  font-size: 1em;
+}
 /* 모바일 디바이스 */
 @media screen and (max-width: 999px) {
   body {
@@ -153,7 +440,7 @@ body {
     top: 0;
     left: 0;
     /* left: -70vw; */
-    z-index: 50;
+    z-index: 100; 
     color: #fff;
     background-color:rgba(0,0,0,0.8);
     transform: translateX(-100%);
@@ -178,8 +465,25 @@ body {
     padding: .5em 0;
     margin: .5em 0 .5em 2em;
   }
+  /* 모바일 메인 콘텐츠 */
+  .main {
+    /* background: yellow; */
+    padding: 0 1em;
+  }
+  /* 모바일 게시판 */
   .board {
     overflow: hidden;
+  }
+  /* 모바일 슬로건 */
+  .slogan {
+    padding: 2em 1em 1em 1em;
+  }
+  /* 모바일 푸터 */
+  .footer {
+    padding: 2em 1em 2em 1em;
+  }
+  .address span {
+    display: block;
   }
 }
 /* 데스크탑 디바이스 */
@@ -343,6 +647,8 @@ body {
   /* 슬로건 */
   .slogan {
     margin-top: 20px;
+    clear: left;
+    position: relative;
   }
   /* 슬로건 제목 */
   .slogan-heading {
@@ -380,303 +686,4 @@ body {
     text-align: center;
     padding: 2em 0;
   }
-}
-/* 헤더 */
-.header {
-  position: relative;
-}
-/* 로고 */
-.logo {
-  margin: 0;
-}
-
-.member {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.member a:hover,
-.member a:hover {
-  color: yellow;  
-}
-/* 검색폼 */
-.search-form fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-input[type="search"] {
-  border: 1px solid #666;
-  border-radius: 5px;
-  padding: .2em 1em;
-}
-
-
-/* 네비게이션 */
-.menu {
-  font-size: 1.6rem;
-}
-.menu span {
-  display: block;
-  font-size: 1.8rem;
-  font-family: 'Noto Sans Bold', sans-serif;
-  cursor: pointer; 
-}
-.menu span:hover,
-.menu li:focus span {
-  color: #ff0;
-}
-
-/* 메인 콘텐츠 섹션 제목 공통 */
-.main-section-heading {
-  margin: 1em 0;
-  min-height: 60px;
-  padding: 5px 0 0 65px;
-  background-image: url("images/sprite_main.png");
-  background-repeat: no-repeat;  
-}
-.en-heading {
-  display: block;
-}
-/* 메인 콘텐츠 단락 공통 */
-.main [class$="summary"] {
-  line-height: 1.5;
-  margin: 1em 0;
-} 
-/* 추천서적 */
-/* 추천서적 제목*/
-.recommend-book-heading {
-  background-position: 0 0;
-}
-.recommend-book-heading .en-heading {
-  color: #abd375; 
-}
-/* 추천서적 커버이미지 */
-.recommend-book-cover {
-  /* background-color: pink; */
-  width: 75%;
-  margin: 1em auto;
-  text-align: center;
-}
-.recommend-book-cover img {
-  /* 원본이상 커지지 않도록 되도록 이미지 사이즈를  max-width 속성으로 지정한다. */
-  max-width: 100%;
-  height: auto;
-}
-/* 추천서적 저자 및 평점*/
-.recommend-book-detail {
-  text-align: center;
-  margin: 1em 0;
-}
-.recommend-book-author, .recommend-book-author-name {
-  display: inline-block;
-}
-.recommend-book-grade {
-  font-size: 2em;
-  color: #abd375; 
-}
-/* 새소식 */
-/* 새소식 제목 */
-.news-heading {
-  background-position: 0 -230px;
-}
-.news-heading .en-heading {
-  color: #e8ca58
-}
-.news_container {
-  margin: 1em 0;
-}
-.news-video {
-  max-width: 100%;
-  height: auto;
-}
-/* 새소식 날짜 정보 */
-.news-date {
-  display: block;
-  text-align: right;
-}
-.news-date {
-  display: block;
-  margin-top: 15px;
-  padding-left: 20px;
-  font-size: 16px;
-  text-align: right;
-}
-.news-date::before {
-  margin-right: 3px;
-  font-family: 'fontello';
-  content: '\e80b';
-}
-
-/* 게시판 */
-/* 게시판 제목 */
-.board {
-  position: relative;
-}
-.board-heading {
-  background-position: 0 -115px;
-  margin-bottom: 0.5em;
-}
-.board-heading .en-heading {
-  color: #c7b39a
-}
-/* 게시판 목록 */
-.board-list {
-  /* background-color: pink; */
-}
-.board-list li {
-  margin-top: 0.5em;
-  /* font-size: 0; */
-  /* overflow: hidden; */
-  /* display: flex;
-  justify-content: space-between; */
-}
-.board-list a,
-.board-list time {
-  vertical-align: middle;
-}
-.board-list a {
-  display: inline-block;
-  /* float: left; */
-  width: calc(100% - 110px);
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 0.5em 0;
-  text-overflow: ellipsis;
-}
-.board-list li a:hover {
-  color: rgb(255,0,0)
-}
-.board-list li time {
-  display: inline-block;
-  width: 75px;
-  /* float: right; */
-}
-.board-more {
-  position: absolute;
-  top: 1.5em;
-  right: -0.5em;
-  /* 조작할 수 있는 영역을 늘려주자 */
-  padding: 0.5em;
-  font-size: 16px;
-  background-color: transparent;
-  /* background-color: silver; */
-}
-.board-more:hover {
-  color: rgb(255,0,0)
-}
-.board-more.icon-plus::before {
-  color: rgb(30, 140, 60);
-}
-
-/* 인기사이트 제목 */
-.favorite-site-heading {
-  background-position: 0 -345px;
-}
-.favorite-site-heading .en-heading {
-  color: #eea60a
-}
-/* 인기사이트 리스트 */
-.favorite-site-list {
-  overflow: hidden;
-}
-.favorite-site-list li{
-  counter-increment: number;
-  margin: 1em 0;
-}
-.favorite-site-list li::before {
-  content: counter(number, decimal);
-  background-color: #eea60a;
-  color: #fff;
-  border-radius: 50%;
-  padding: 0 .5em; /* 글자가 가운데로 오게 하는 장점이 있음 */
-  margin-right: 1em;
-}
-.favorite-site-list a:hover {
-  color: #ff0000
-}
-
-/* 트위터 */
-/* 트위터 제목 */
-.twitter-heading {
-  background-position: 0 -460px;
-}
-.twitter-heading .en-heading {
-  color: #6aaee6
-}
-/* 트위터 사용자 정보 */
-.twitter-user-info {
-  /* display: inline-block; */
-  float: left;
-  width: calc(100% - 90px);
-  margin-bottom: 1em;
-  /* background-color: greenyellow; */
-}
-.twitter-user-name,
-.twitter-user-id {
-  float: left;
-  /* display: inline; */
-  /* background-color: lime; */
-}
-.twitter-user-name {
-  color: #6aaee6
-}
-.twitter-user-id {
-  font-family: 'Noto Sans Bold', sans-serif;
-  /* font-weight: bold; */
-}
-.twitter-user-id:hover {
-  color: rgb(255,0,0)
-}
-/* 트위터 사용자 프로필 이미지 */
-.twitter-user-profile {
-  float: right;
-  width: 75px;
-  margin: 0 0 0.5em 1em;
-  /* background-color: pink; */
-}
-.twitter-thumbnail {
-  display: block;
-  padding: 0.4em;
-  border: 1px solid #000;
-  border-radius: 50%;
-  max-width: 100%;
-  height: auto;
-}
-/* 트위터 날짜 */
-.twitter-date {
-  clear: left;
-  display: block;
-  text-align: right;
-  /* background-color: teal; */
-}
-/* 슬로건 */
-.slogan {
-  margin-top: 20px;
-  clear: left;
-  position: relative;
-}
-/* 슬로건 본문 */
-.slogan-content {
-  font-size: 1.6rem;
-  margin: 1em 5em 1em 10em;
-}
-/* 겹따옴표 스타일링 */
-.slogan-content q::before {
-  font-size: 5rem;
-  position: relative;
-  top: 0.5em;
-}
-
-/* 푸터 */
-.footer {
-  background-color: #988574;
-  color: #fff;
-}
-.address {
-  font-style: normal;
-  margin-bottom: 1em;
-}
-.copyright {
-  font-size: 1em;
 }

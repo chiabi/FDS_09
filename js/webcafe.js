@@ -49,7 +49,9 @@
 // });
 
 $(document).ready(function(){
-    (function(){
+    var video = $('.news-video'); // 하나가 들어오더라도 배열 객체가 생성된다.
+    var viewport = window.matchMedia('(max-width: 999px)');
+    if (viewport.matches) {
         var nav = $('.navigation');
         var btn_menubar = $('.btn-menubar');
         var span = $('.menubar');
@@ -57,7 +59,8 @@ $(document).ready(function(){
         var menuLists  = $('.menu-list');
         var menuItems  = $('.menu-item');
         var subMenus  = $('.sub-menu');
-        var video = $('.news-video'); // 하나가 들어오더라도 배열 객체가 생성된다.
+        var slogan = $('.slogan-heading');
+        slogan.addClass('a11y-hidden');
         /* 네비게이션 */
         /* 자바스크립트로 정적인 스타일을 제어하는 이런 방법은 별로 좋지 않음 */
         // btn_menubar.css('cursor', 'pointer');
@@ -76,43 +79,49 @@ $(document).ready(function(){
         /*
             keyup(누를때), keydown(누르고난 뒤), keypress(누르고 있을때)
         */
-        var viewport = window.matchMedia('(max-width: 999px)');
-        if (viewport.matches) {
-            menuItems.addClass('icon-plus')
-            .attr('role', 'button')
-            .attr('aria-expanded', 'false')
-            .attr('aria-haspopup', 'true')
-            .attr('tabindex', 0);
-            menuItems.on('click keydown', function(e){
-                /* 클릭이거나, 키다운이면서 키코드가 13일때 */
-                if(e.type === 'click' || (e.type === 'keydown' && e.keyCode === 13)) {
-                    menuLists.removeClass('menu-act');
-                    menuItems.removeClass('icon-minus')
-                            .addClass('icon-plus')
-                            .attr('aria-expanded', 'false')
-                            .css('color', '#fff').siblings().hide();
+        menuItems.addClass('icon-plus')
+        .attr('role', 'button')
+        .attr('aria-expanded', 'false')
+        .attr('aria-haspopup', 'true')
+        .attr('tabindex', 0);
+        menuItems.on('click keydown', function(e){
+            /* 클릭이거나, 키다운이면서 키코드가 13일때 */
+            if(e.type === 'click' || (e.type === 'keydown' && e.keyCode === 13)) {
+                menuLists.removeClass('menu-act');
+                menuItems.removeClass('icon-minus')
+                        .addClass('icon-plus')
+                        .attr('aria-expanded', 'false').siblings().hide();
+                if(!$(this).parent().hasClass('menu-act')) {
                     $(this).parent().addClass('menu-act');
                     $(this).removeClass('icon-plus')
                             .addClass('icon-minus')
-                            .attr('aria-expanded', 'true')
-                            .css('color', '#ff0').siblings().show();
+                            .attr('aria-expanded', 'true').siblings().show();
                 }
-            });
-        }
-    
-        /* 비디오 */
-        video.get(0).volume = 0.0;
-        // 멀티이벤트 실행: .on(), .bind()
-        video.on('mouseover focusin', function(){
-            // $(this) // 모든 배열객체의 this
-            // video[0].play();
-            // this.play();
-            this.volume = 1.0;
+            }
         });
-        video.on('mouseout focusout', function(){
-            // $(this) // 모든 배열객체의 this
-            this.pause();
-            this.volume = 0;
+        menu.on('focusout focusin', function(e) {
+            if( e.type === 'focusout') {
+                nav.removeClass('is-act');
+                btn_menubar.attr('aria-label', '메인메뉴열기');
+            } else {
+                nav.addClass('is-act');
+                btn_menubar.attr('aria-label', '메인메뉴닫기');
+            }
         });
-    }());
+    }
+
+    /* 비디오 */
+    video.get(0).volume = 0.0;
+    // 멀티이벤트 실행: .on(), .bind()
+    video.on('mouseover focusin', function(){
+        // $(this) // 모든 배열객체의 this
+        // video[0].play();
+        // this.play();
+        this.volume = 1.0;
+    });
+    video.on('mouseout focusout', function(){
+        // $(this) // 모든 배열객체의 this
+        this.pause();
+        this.volume = 0;
+    });
 });

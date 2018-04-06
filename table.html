@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>테이블</title>
+  <style>
+    table {
+      border-spacing: 0;
+      /* 구분되어 있는걸 합침*/
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>테이블 마크업</h1>
+  <table>
+    <thead>
+      <tr>
+        <th id="name">이름</th>
+        <th id="en">영어</th>
+        <th id="ko">국어</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th id="sum">합계</th>
+        <!-- headers에는 여러개 연결 가능 -->
+        <td headers="en sum">150</td><!-- '영어 합계 150'이라고 읽어준다 -->
+        <td headers="ko sum">180</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>이영희</td>
+        <td>80</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>김철수</td>
+        <td>70</td>
+        <td>90</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
